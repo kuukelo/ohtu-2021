@@ -1,5 +1,8 @@
 package ohtu.verkkokauppa;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class Kauppa {
 
     private Varasto2 varasto;
