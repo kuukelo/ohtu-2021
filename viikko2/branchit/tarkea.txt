@@ -1,0 +1,5 @@
+T‰m‰ on t‰rke‰ tiedosto.
+T‰‰ll‰ on pari rivi‰ teksti‰.
+
+Tokassa lis‰tty nyt rivi.
+Ja toinen.
