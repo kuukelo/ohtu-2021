@@ -1,3 +1,6 @@
+Muokkaan nyt tiedoston alkua.
+Josko nyt toimisi.
+
 T‰m‰ on t‰rke‰ tiedosto.
 T‰‰ll‰ on pari rivi‰ teksti‰.
 
