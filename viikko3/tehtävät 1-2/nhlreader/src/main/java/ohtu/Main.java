@@ -7,6 +7,9 @@ package ohtu;
 
 import com.google.gson.Gson;
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Collections;
 import org.apache.http.client.fluent.Request;
 
 /**
@@ -18,16 +21,26 @@ public class Main {
         String url = "https://nhlstatisticsforohtu.herokuapp.com/players";
         
         String bodyText = Request.Get(url).execute().returnContent().asString();
-                
-        System.out.println("json-muotoinen data:");
-        System.out.println( bodyText );
 
         Gson mapper = new Gson();
         Player[] players = mapper.fromJson(bodyText, Player[].class);
-        
-        System.out.println("Oliot:");
+        ArrayList<Player> pelaajat = new ArrayList();
         for (Player player : players) {
+            pelaajat.add(player);
+        }
+        
+        Collections.sort(pelaajat);
+        
+        System.out.println("Players from FIN " + LocalDateTime.now());
+        System.out.println("");
+        for (Player player : pelaajat) {
             if (player.getMaa().equals("FIN")) {
+                if(player.getName().length()>15) {
+                    System.out.print(player.getName() + "\t");
+                } else {
+                    System.out.print(player.getName() + "\t\t");
+                }
+//                System.out.print(player.getName());
                 System.out.println(player);
             }
             
