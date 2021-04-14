@@ -4,31 +4,67 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 
 public class Tester {
 
     public static void main(String[] args) {
-        WebDriver driver = new ChromeDriver();
+        WebDriver driver = new HtmlUnitDriver();
 
         driver.get("http://localhost:4567");
         
-        sleep(2);
+                // tulostetaan sivu konsoliin
+        System.out.println(driver.getPageSource());
         
-        WebElement element = driver.findElement(By.linkText("login"));
+//        WebElement element = driver.findElement(By.linkText("login"));
+        WebElement element = driver.findElement(By.linkText("register new user"));
         element.click();
 
-        sleep(2);
+        // tulostetaan sivu konsoliin
+        System.out.println(driver.getPageSource());
+        
+        
 
         element = driver.findElement(By.name("username"));
-        element.sendKeys("pekka");
+//        element.sendKeys("pekka");
+//        element.sendKeys("vaaratunnus");
+        element.sendKeys("uusinTunnus6");
         element = driver.findElement(By.name("password"));
-        element.sendKeys("akkep");
-        element = driver.findElement(By.name("login"));
+//        element.sendKeys("akkep");
+//        element.sendKeys("vaarasalasana");
+        element.sendKeys("uusinSalasana6");
         
-        sleep(2);
+        element = driver.findElement(By.name("passwordConfirmation"));
+        element.sendKeys("uusinSalasana6");
+        
+//        element = driver.findElement(By.name("login"));
+        element = driver.findElement(By.name("signup"));
+        
+        
         element.submit();
+        
+        
+      
+        System.out.println(driver.getPageSource());
+        
+          
+        element = driver.findElement(By.linkText("continue to application mainpage"));
+        
+        
+        element.click();
 
-        sleep(3);
+
+        System.out.println(driver.getPageSource());
+        
+          
+        element = driver.findElement(By.linkText("logout"));
+        
+        
+        element.click();
+        
+        
+        System.out.println(driver.getPageSource());
+        
         
         driver.quit();
     }
