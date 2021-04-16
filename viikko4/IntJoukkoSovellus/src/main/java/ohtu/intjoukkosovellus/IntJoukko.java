@@ -43,24 +43,25 @@ public class IntJoukko {
         if (!kuuluu(luku)) {
             ljono[alkioidenLkm] = luku;
             alkioidenLkm++;
-            
-            if (alkioidenLkm % ljono.length == 0) {
-                ljono = Arrays.copyOf(ljono, ljono.length+kasvatuskoko);
-            }
+            kasvata();
             return true;
         }
         return false;
     }
-
+    
+    public void kasvata() {
+        if (alkioidenLkm % ljono.length == 0) {
+            ljono = Arrays.copyOf(ljono, ljono.length+kasvatuskoko);
+        }
+    }
+    
     public boolean kuuluu(int luku) {
-        boolean vastaus = false;
         for (int i = 0; i < alkioidenLkm; i++) {
             if (luku == ljono[i]) {
-                vastaus = true;
-                break;
+                return true;
             }
         }
-        return vastaus;
+        return false;
     }
 
     public boolean poista(int luku) {
