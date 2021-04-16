@@ -15,15 +15,15 @@ public class Main {
 
         // kauppa hoitaa yhden asiakkaan kerrallaan seuraavaan tapaan:
         kauppa.aloitaAsiointi();
-        kauppa.lisaaKoriin(1);
-        
-        kauppa.aloitaAsiointi();
-        kauppa.lisaaKoriin(2);
-        
 //        kauppa.lisaaKoriin(1);
-//        kauppa.lisaaKoriin(3);
-//        kauppa.lisaaKoriin(3);
-//        kauppa.poistaKorista(1);
+        
+//        kauppa.aloitaAsiointi();
+//        kauppa.lisaaKoriin(2);
+        
+        kauppa.lisaaKoriin(1);
+        kauppa.lisaaKoriin(3);
+        kauppa.lisaaKoriin(3);
+        kauppa.poistaKorista(1);
         kauppa.tilimaksu("Pekka Mikkola", "1234-12345");
 //
 //        // seuraava asiakas
