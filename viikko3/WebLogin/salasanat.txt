@@ -8,3 +8,6 @@ uusinTunnus3;uusinSalasana3
 uusinTunnus4;uusinSalasana4
 uusinTunnus5;uusinSalasana5
 uusinTunnus6;uusinSalasana6
+liisa;mi
+ulriikka;me
+patrik;salainensala1

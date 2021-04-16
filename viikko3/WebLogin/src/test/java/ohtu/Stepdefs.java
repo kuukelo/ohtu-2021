@@ -22,6 +22,12 @@ public class Stepdefs {
         WebElement element = driver.findElement(By.linkText("login"));       
         element.click();   
     }    
+    @Given("command new user is selected")
+    public void newUserIsSelected() {
+        driver.get(baseUrl);
+        WebElement element = driver.findElement(By.linkText("register new user"));       
+        element.click();   
+    }    
     
     @When("correct username {string} and password {string} are given")
     public void correctUsernameAndPasswordAreGiven(String username, String password) {
@@ -57,6 +63,37 @@ public class Stepdefs {
     public void systemWillRespond(String pageContent) throws Throwable {
         assertTrue(driver.getPageSource().contains(pageContent));
     }
+
+    @When("a valid username {string} and password {string} and matching password confirmation are entered")
+    public void usernameAndPasswordAreGiven2(String username, String password) throws Throwable {
+        registerUserWith(username, password, password);
+    }
+    
+    @Then("a new user is created")
+    public void userIsCreated() {
+        pageHasContent("Welcome to Ohtu Application!");
+    }
+    
+    @When("invalid username {string} and password {string} and matching password confirmation are entered")
+    public void invalidUsernameAndPasswordAreGiven(String username, String password) throws Throwable {
+        registerUserWith(username, password, password);
+    }
+    
+    @Then("user is not created and error {string} is reported")
+    public void userIsCreated(String content) {
+        pageHasContent(content);
+    }
+    
+    @When("a valid username {string} and invalid password {string} and matching password confirmation are entered")
+    public void invalidUsernameAndInvalidPasswordAreGiven(String username, String password) throws Throwable {
+        registerUserWith(username, password, password);
+    }
+    @When("a valid username {string} and valid password {string} and unmatching password confirmation are entered")
+    public void invalidUsernameAndUnMatchingPasswordConfirmationAreGiven(String username, String password) throws Throwable {
+        String vaara = "vaarasalasanakonfirmaatio";
+        registerUserWith(username, password, vaara);
+    }
+    
     
     @After
     public void tearDown(){
@@ -76,6 +113,17 @@ public class Stepdefs {
         element = driver.findElement(By.name("password"));
         element.sendKeys(password);
         element = driver.findElement(By.name("login"));
+        element.submit();  
+    } 
+    private void registerUserWith(String username, String password, String confirmation) {
+        assertTrue(driver.getPageSource().contains("Create username and give password"));
+        WebElement element = driver.findElement(By.name("username"));
+        element.sendKeys(username);
+        element = driver.findElement(By.name("password"));
+        element.sendKeys(password);
+        element = driver.findElement(By.name("passwordConfirmation"));
+        element.sendKeys(confirmation);
+        element = driver.findElement(By.name("signup"));
         element.submit();  
     } 
 }
