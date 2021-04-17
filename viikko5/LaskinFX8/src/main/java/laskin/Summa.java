@@ -13,7 +13,8 @@ import javafx.scene.control.TextField;
  * @author Elina
  */
 public class Summa extends Komento {
-
+    private int viimeisin;
+    
     public Summa(TextField tuloskentta, TextField syotekentta, Button nollaa, Button undo, Sovelluslogiikka sovellus) {
         super(tuloskentta, syotekentta, nollaa, undo, sovellus);
     }
@@ -25,11 +26,15 @@ public class Summa extends Komento {
         tulos += syote;
         tuloskentta.setText(String.valueOf(tulos));
         syotekentta.setText("");
+        viimeisin = syote;
     }
 
     @Override
     public void peru() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        int tulos = Integer.parseInt(tuloskentta.getText());
+        tulos = tulos - viimeisin;
+        tuloskentta.setText(String.valueOf(tulos));
+        syotekentta.setText("");
     }
     
 }

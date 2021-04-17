@@ -13,20 +13,23 @@ import javafx.scene.control.TextField;
  * @author Elina
  */
 public class Nollaa extends Komento {
-
+    private int viimeisin;
+    
     public Nollaa(TextField tuloskentta, TextField syotekentta, Button nollaa, Button undo, Sovelluslogiikka sovellus) {
         super(tuloskentta, syotekentta, nollaa, undo, sovellus);
     }
 
     @Override
-    public void suorita() {
+    public void suorita() {    
+        viimeisin = Integer.parseInt(tuloskentta.getText());
         this.tuloskentta.setText("0");
-        this.syotekentta.setText(""); 
+        this.syotekentta.setText("");
     }
 
     @Override
     public void peru() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        tuloskentta.setText(String.valueOf(viimeisin));
+        syotekentta.setText("");
     }
     
 }
