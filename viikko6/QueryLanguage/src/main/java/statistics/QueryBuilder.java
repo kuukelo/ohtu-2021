@@ -35,11 +35,18 @@ public class QueryBuilder {
     }
 
     public Matcher build() {
-        return m;
+        Matcher buildMatcher = this.m;
+        this.m = new All();
+        return buildMatcher;
     }
 
     public QueryBuilder hasFewerThan(int value, String category) {
         this.m = new And(m, new HasFewerThan(value, category));
+        return this;
+    }
+
+    public QueryBuilder oneOf(Matcher m1, Matcher m2) {
+        this.m = new Or(m1, m2);
         return this;
     }
     

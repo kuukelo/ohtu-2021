@@ -12,6 +12,7 @@ public class PlaysIn implements Matcher {
     
     @Override
     public boolean matches(Player p) {
+//        System.out.println("Ollaan " + team);
         return p.getTeam().contains(team);
     }
     
